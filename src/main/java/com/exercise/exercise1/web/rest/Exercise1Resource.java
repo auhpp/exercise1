@@ -1,4 +1,4 @@
-package com.exercise.exercise1.rest;
+package com.exercise.exercise1.web.rest;
 
 import com.exercise.exercise1.dto.request.MovieRequest;
 import com.exercise.exercise1.dto.response.MovieResponse;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
-public class exercise1Resource {
+public class Exercise1Resource {
 
     @GetMapping("/calculation")
     public Float calculationTwoNumbers(Float num1, Float num2, Character operator) {
