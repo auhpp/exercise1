@@ -3,8 +3,12 @@ package com.exercise.exercise1.dto.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MovieRequest {
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("author")
     private String author;
+
     @JsonProperty("year_of_release")
     private int yearOfRelease;
 
