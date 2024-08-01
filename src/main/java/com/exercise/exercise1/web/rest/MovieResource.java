@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
-public class Exercise1Resource {
+public class MovieResource {
 
     @GetMapping("/calculation")
     public Float calculationTwoNumbers(Float num1, Float num2, Character operator) {
