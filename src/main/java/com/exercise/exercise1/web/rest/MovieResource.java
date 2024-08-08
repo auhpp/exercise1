@@ -6,47 +6,46 @@ import com.exercise.exercise1.service.MovieService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/")
 public class MovieResource {
 
     private MovieService movieService;
 
-    public MovieResource(@Qualifier("reverseMovieService") MovieService movieService) {
+    public MovieResource(@Qualifier("defaultMovieService") MovieService movieService) {
         this.movieService = movieService;
     }
 
-    @GetMapping("/calculation")
-    public Float calculationTwoNumbers(Float num1, Float num2, Character operator) {
-        Float result = null;
-        if (num1 != null && num2 != null) {
-            switch (operator) {
-                case '+':
-                    result = num1 + num2;
-                    break;
-                case '-':
-                    result = num1 - num2;
-                    break;
-                case '*':
-                    result = num1 * num2;
-                    break;
-                case '/':
-                    if (num2 != 0)
-                        result = num1 / num2;
-                    else {
-                        System.out.println("Loi! Mau so phai khac 0!");
-                    }
-                    break;
-                default:
-                    System.out.println("Sai cu phap toan tu!");
-            }
-        }
-        return result;
+    //    get movie by id
+    @GetMapping("/movies/{movieId}")
+    public MovieResponse getMovieById(@PathVariable Long movieId) {
+        return movieService.getMovieById(movieId);
     }
 
-    @PostMapping("/movie")
-    public MovieResponse movieInfo(@RequestBody MovieRequest movieRequest) {
-        return movieService.getMovieResponse(movieRequest);
+    //    get all movie
+    @GetMapping("/movies")
+    public Set<MovieResponse> getAllMovies() {
+        return movieService.getAllMovies();
+    }
+
+    //    create movie
+    @PostMapping("/movies")
+    public MovieResponse create(@RequestBody MovieRequest movieRequest) {
+        return movieService.create(movieRequest);
+    }
+
+    //    update movie
+    @PutMapping("/movies/{id}")
+    public MovieResponse update(@PathVariable Long id, @RequestBody MovieRequest movieRequest) {
+        return movieService.update(id, movieRequest);
+    }
+
+    //     delete movie by id
+    @DeleteMapping("movies/{id}")
+    public void deleteMovieById(@PathVariable Long id) {
+        movieService.deleteMovieById(id);
     }
 
 }

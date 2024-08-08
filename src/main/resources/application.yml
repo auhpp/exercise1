@@ -1,3 +1,10 @@
 spring:
   application:
     name: exercise1
+  datasource:
+    url: jdbc:mysql://localhost:12345/movie_system
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update

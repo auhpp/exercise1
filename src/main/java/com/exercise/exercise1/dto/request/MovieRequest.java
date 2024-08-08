@@ -1,6 +1,10 @@
 package com.exercise.exercise1.dto.request;
 
+import com.exercise.exercise1.entity.Actor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Set;
 
 public class MovieRequest {
     @JsonProperty("name")
@@ -35,4 +39,6 @@ public class MovieRequest {
     public void setYearOfRelease(int yearOfRelease) {
         this.yearOfRelease = yearOfRelease;
     }
+
+
 }
